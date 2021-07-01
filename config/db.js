@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const connectDB = async ()=>{
     try{
-        await mongoose.connect("mongodb://localhost/DEV-CONNECTOR",{
+        await mongoose.connect("mongodb://localhost/Contact-Keeper",{
             useCreateIndex:true,
             useFindAndModify:false,
             useNewUrlParser:true,

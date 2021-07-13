@@ -1,11 +1,23 @@
-import React,{useSate,useContext} from 'react'
+import React,{useState,useContext,useEffect} from 'react'
 import AlertContext from '../../context/alert/AlertContext'
+import AuthContext from '../../context/Auth/authContext'
 
 const Register = () => {
     const alertContext = useContext(AlertContext)
+    const authContext = useContext(AuthContext)
     const {setAlert} = alertContext
 
-    const [user,setUser]=useSate({
+    const {register,error,clearErrors} = authContext
+
+    useEffect(()=>{
+        //check error
+        if(error=="User already exist"){
+            setAlert(error,'danger')
+            clearErrors()
+        }
+    },[error])
+
+    const [user,setUser]=useState({
         name:'',
         email:'',
         password:'',
@@ -28,7 +40,11 @@ const Register = () => {
         }else if(password !== password2){
             setAlert('Passwords do not match','danger')
         }else{
-            console.log('Register Submit')
+            register({
+                name,
+                email,
+                password
+            })
         }  
     }
 
@@ -52,7 +68,7 @@ const Register = () => {
                 </div>
                 <div className='form-group'>
                     <label htmlFor='password2'>Confirm Password</label>
-                    <input type='password' name='password2' value={password2} onChange={onChange} ref/>
+                    <input type='password' name='password2' value={password2} onChange={onChange}/>
                 </div>
                 <input type="submit" value="Register" className="btn btn-primary btn-block"/>
             </form>

@@ -30,7 +30,7 @@ const AuthState2 = (props) => {
 
 
     //Register User
-    const register = async formData=>{
+    const register = async (formData)=>{
         const config={
             headers:{
                 'Content-Type':'application/json'
@@ -39,9 +39,10 @@ const AuthState2 = (props) => {
 
         try{
             const res = await axios.post('/api/users',formData,config)
+            console.log(res)
             dispatch({
                 type:REGISTER_SUCCESS,
-                payload:res.data
+                payload:res.data//response is token
             })
         }catch(err){
             dispatch({
@@ -58,14 +59,21 @@ const AuthState2 = (props) => {
 
 
     //Clear Errors
+    const clearErrors=()=>{
+        dispatch({
+            type:CLEAR_ERRORS
+        })
+    }
    
     return (
         <authContext.Provider value={{
             token:state.token,
-            isAthenticated:state.isAthenticated,
+            isAuthenticated:state.isAuthenticated,
             loading:state.loading,
             user:state.user,
-            error:state.error
+            error:state.error,
+            register,
+            clearErrors
         }}>
             {props.children}
         </authContext.Provider>

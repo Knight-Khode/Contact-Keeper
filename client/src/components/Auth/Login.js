@@ -1,7 +1,7 @@
-import React,{useSate} from 'react'
+import React,{useState} from 'react'
 
 const Login = () => {
-    const [user,setUser]=useSate({
+    const [user,setUser]=useState({
         email:'',
         password:''
     })

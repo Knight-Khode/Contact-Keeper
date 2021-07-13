@@ -26,7 +26,7 @@ export default (state,action)=>{
                 token:null,
                 isAuthenticated:false,
                 user:null,
-                errors:action.payload
+                error:action.payload
             }
         default:
             return state

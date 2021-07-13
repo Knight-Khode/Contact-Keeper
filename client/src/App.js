@@ -5,17 +5,17 @@ import Navbar from './components/Layout/Navbar';
 import Home from './components/pages/Home'
 import About from './components/pages/About'
 import ContactState from './context/contact/ContactState';
-import AuthState from './context/Auth/AuthState';
 import AlertState from './context/alert/AlertState';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
 import Alerts from './components/Layout/Alerts';
+import AuthState2 from './context/Auth/AuthState2';
 
 const App = ()=>{
   return(
-    <AuthState>
+    <AuthState2>
       <ContactState>
-        <AlertState/>
+        <AlertState>
           <Router>
             <Fragment>
               <Navbar/>
@@ -30,9 +30,9 @@ const App = ()=>{
               </div>
             </Fragment>
           </Router>
-        <AlertState/>
+        </AlertState>
       </ContactState>
-    </AuthState>
+    </AuthState2>
   )  
 }
 

@@ -10,6 +10,7 @@ import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
 import Alerts from './components/Layout/Alerts';
 import AuthState2 from './context/Auth/AuthState2';
+import setAuthToken from './utils/setAuthToken';
 
 const App = ()=>{
   return(

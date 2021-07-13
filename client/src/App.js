@@ -11,6 +11,7 @@ import Login from './components/Auth/Login';
 import Alerts from './components/Layout/Alerts';
 import AuthState2 from './context/Auth/AuthState2';
 import setAuthToken from './utils/setAuthToken';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 const App = ()=>{
   return(
@@ -23,7 +24,7 @@ const App = ()=>{
               <div className="container">
                 <Alerts/>
                 <Switch>
-                  <Route exact path='/' component={Home}/>
+                  <PrivateRoute exact path='/' component={Home}/>
                   <Route exact path='/about' component={About}/>
                   <Route exact path='/register' component={Register}/>
                   <Route exact path='/login' component={Login}/>
